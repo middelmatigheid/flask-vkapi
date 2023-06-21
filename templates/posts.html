@@ -1,0 +1,39 @@
+{% for post in posts %}
+<div class="post">
+    <div class="post-images">
+        {% for image in post['attachments'] %}
+        <img src="{{ image['photo']['sizes'][image['maxsize']]['url'] }}" alt="" class="post-image">
+        {% endfor %}
+    </div>
+    <div class="post-description">
+        <div class="post-info">
+            {% if post['is_pinned'] == 1 %}
+            <img src="../static/images/pin.png" alt="" style="opacity: 0.7">
+            {% endif %}
+            <div class="post-date">{{ str(datetime(post['date']))[:10] }}</div>
+            <div class="post-time">{{ str(datetime(post['date']))[11:16] }}</div>
+            <div class="post-views">{{ post['views']['count'] }}</div>
+            <img src="../static/images/views.png" alt="">
+            <div class="post-reposts">{{ post['reposts']['count'] }}</div>
+            <img src="../static/images/reposts.png" alt="" style="opacity: 0.7">
+        </div>
+        <div class="post-text">{{ post['text'] }}</div>
+    </div>
+    <div class="post-reactions">
+        <div class="post-reactions-like">
+            <a href="https://vk.com/gorephotographer?w=wall{{ post['from_id'] }}_{{ post['id'] }}" target="_blank" class="post-reactions-icon">
+                <img src="../static/images/like.png" alt="" class="like">
+                <img src="../static/images/like-active.png" alt="" class="like-active">
+            </a>
+            <div class="post-reactions-num">{{ post['likes']['count'] }}</div>
+        </div>
+        <div class="post-reactions-comment">
+            <a href="https://vk.com/gorephotographer?w=wall{{ post['from_id'] }}_{{ post['id'] }}" target="_blank" class="post-reactions-icon">
+                <img src="../static/images/comment.png" alt="" class="comment">
+                <img src="../static/images/comment-active.png" alt="" class="comment-active">
+            </a>
+            <div class="post-reactions-num">{{ post['comments']['count'] }}</div>
+        </div>
+    </div>
+</div>
+{% endfor %}
