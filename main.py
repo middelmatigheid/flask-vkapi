@@ -1,10 +1,14 @@
 import requests
+from dotenv import load_dotenv
+import os
 from datetime import datetime
 from flask import Flask, render_template
 
 
+load_dotenv()
+
 # VK API access token
-access_token = None
+access_token = os.getenv('ACCESS_TOKEN')
 
 
 # Function to find out position of photo's size with the highest resolution
@@ -54,3 +58,4 @@ def post(posts_offset):
 
 if __name__ == '__main__':
     app.run(debug=True)
+
