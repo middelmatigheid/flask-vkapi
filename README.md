@@ -19,7 +19,7 @@ Website that provides posts from [VK group](https://vk.com/gorephotographer). Th
 - Flask - web framework
 - HTML, CSS, JavaScript
 
-# Downloading and running the bot
+# Downloading and running the website
 
 ### 1. Download [Python](https://www.python.org/) and IDE
 
